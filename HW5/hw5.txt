@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Volume Calculation for
+a Cylinder, Sphere, or Cone</h1>
+
+<p id="demo">Select Units (English or SI)</p>
+
+<input type="radio" name="unit" value="English" checked> English
+<input type="radio" name="unit" value="SI"> SI <br><br>
+
+Select Shape:
+<select name="shape">
+	<option value="cylinder">Cylinder</option>
+    <option value="sphere">Sphere</option>
+    <option value="cone">Cone</option>
+</select> <br><br>
+
+Enter Radius:
+<input type="text" name="radius"> <br><br>
+Enter Height:
+<input type="text" name="radius"> <br><br>
+
+<script>
+function myFunction(){
+
+    	document.getElementById("demo").style.color = "red"
+
+}
+</script>
+
+<button onclick="myFunction()">Reset Form</button>
+</body>
+</html>

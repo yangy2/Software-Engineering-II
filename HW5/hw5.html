@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+</style>
+
+<h1>Volume Calculation for
+a Cylinder, Sphere, or Cone</h1>
+
+<p id="demo">Select Units (English or SI)</p>
+
+<form id="form">
+	<input type="radio" name="unit" id="unit1" value="English" checked> English
+	<input type="radio" name="unit" id="unit2" value="SI"> SI <br><br>
+
+	Select Shape:
+	<select name="shape" id="shape">
+		<option value="Cylinder">Cylinder</option>
+	    <option value="Sphere">Sphere</option>
+	    <option value="Cone">Cone</option>
+	</select> <br><br>
+
+	Enter Radius:
+	<input type="text" id="radius"> <br><br>
+	Enter Height:
+	<input type="text" id="height"> <br><br>
+</form>
+
+<button onclick="reset()">Reset Form</button>
+
+<script>
+function reset(){
+    document.getElementById("form").reset()
+}
+</script>
+
+
+<h1>Results</h1>
+
+<p id="resultunit"></p>
+<p id="resultshape"></p>
+
+<table id="table">
+  <tr>
+    <th>Shape</th>
+    <th>Radius</th>
+    <th>Height</th>
+    <th>Volume</th>
+  </tr>
+  
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</table>
+
+<button onclick="myFunction()">Calculate</button>
+
+<script>
+function myFunction(){
+
+    	if(document.getElementById("unit1").checked == true)
+        	var unit = document.getElementById("unit1").value
+        else 
+        	var unit = document.getElementById("unit2").value
+        var shape = document.getElementById("shape").value
+		var radius = document.getElementById("radius").value
+        var height = document.getElementById("height").value        
+        
+   		if(shape == "Cylinder")
+        	var volume = Math.PI * radius * radius * height
+        else if(shape == "Sphere")
+        	var volume = Math.PI * radius * radius * radius * 4/3
+        else if(shape == "Cone")
+        	var volume = Math.PI * radius * radius * height * 1/3
+        
+        document.getElementById("resultunit").innerHTML = 
+        "You are using " + unit + " units"
+        
+        document.getElementById("resultshape").innerHTML = 
+        "Calculating volume for a " + shape
+        
+        var r1 = document.getElementById("table").rows[1].cells;
+        if(document.getElementById("unit1").checked == true)
+        {
+        	r1[1].innerHTML = "(ft)"
+            r1[2].innerHTML = "(ft)"
+            r1[3].innerHTML = "(ft^3)"
+        }
+        else
+        {
+        	r1[1].innerHTML = "(m)"
+            r1[2].innerHTML = "(m)"
+            r1[3].innerHTML = "(m^3)"
+        }        
+        var r2 = document.getElementById("table").rows[2].cells;
+		r2[0].innerHTML = shape;
+        r2[1].innerHTML = radius;
+        
+        if(shape == "Sphere")
+        	r2[2].innerHTML = "Irrelevant"
+        else
+        	r2[2].innerHTML = height;
+        r2[3].innerHTML = volume;
+    
+}
+</script>
+
+</body>
+</html>
